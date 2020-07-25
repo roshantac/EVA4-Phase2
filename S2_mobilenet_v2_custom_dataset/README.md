@@ -28,6 +28,7 @@ Curated dataset from Kaggle, google, youtube video meeting all the requirements.
 2. Data preprocessing & Cleanup
     - Image with size > 448 pixel is resized to 448 pixel, keeping aspect ratio same.
     - Removed ~250 flying bird images as the basic requirements are not met.
+    - Curated dataset link: https://drive.google.com/drive/folders/1Xcfk3bJpMkoruQAiY7IJQQkAy0u0CX6u
 
 ## 3. References
 
