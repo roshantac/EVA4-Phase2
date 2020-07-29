@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-def visualize_model(model, device, num_images=6):
+def visualize_model(model, dataloaders, device, num_images=6):
     was_training = model.training
     model.eval()
     images_so_far = 0
