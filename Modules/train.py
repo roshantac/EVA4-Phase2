@@ -4,8 +4,9 @@ import datetime
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import copy
 
-def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
+def train_model(model,device, criterion, optimizer, scheduler, num_epochs=25):
     since = time.time()
 
     best_model_wts = copy.deepcopy(model.state_dict())
