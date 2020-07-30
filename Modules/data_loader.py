@@ -11,9 +11,8 @@ import numpy as np
 
 class DroneDataset(Dataset):
 	def __init__(self, train=True, transform = None):
-		self.train = train
 		self.transform = transform
-		if (self.train == True):
+		if (train == True):
 			data_file = open('trainData.csv','r')
 		else:
 			data_file = open('testData.csv','r')
