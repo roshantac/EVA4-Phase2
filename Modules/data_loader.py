@@ -16,7 +16,7 @@ class DroneDataset(Dataset):
 		if (self.train == True):
 			data_file = open('trainData.csv','r')
 		else:
-			data_file = open('testData.csv')
+			data_file = open('testData.csv','r')
 		
 		self.data = list(csv.reader(data_file))
 		self.classes = ("Flying Birds", "Large QuadCopters", "Small QuadCopters", "Winged Drones")
