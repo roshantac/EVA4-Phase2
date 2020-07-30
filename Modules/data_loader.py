@@ -25,9 +25,9 @@ class DroneDataset(Dataset):
     def __getitem__(self,idx):
         imgLoc, target =self.data[idx][0], int(self.data[idx][2])
         image = np.array(Image.open(imgLoc))
-        print(f"idx:{idx}")
-        print(f"target :{imgLoc}")
-        print(f"imgLoc :{self.classes[target]}")
+        # print(f"idx:{idx}")
+        # print(f"target :{imgLoc}")
+        # print(f"imgLoc :{self.classes[target]}")
 
         if (len(image.shape) == 2) or (len(image.shape)==3 and image.shape[-1]==1):
             image =np.stack((image,)*3, axis =-1)
