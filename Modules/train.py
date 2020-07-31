@@ -1,16 +1,23 @@
 import time
 import datetime
-
+import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import copy
+
+
 
 def train_model(model,dataloaders, dataset_sizes, device, criterion, optimizer, scheduler, num_epochs=25):
     since = time.time()
 
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
+
+    trainLoss = [ ]
+    trainAccu = [ ]
+    valLoss = [ ]
+    valAccu = [ ]
 
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
@@ -57,6 +64,14 @@ def train_model(model,dataloaders, dataset_sizes, device, criterion, optimizer, 
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(
                 phase, epoch_loss, epoch_acc))
 
+            # Data for plot
+            if phase == 'train':
+                trainLoss.append(epoch_loss)
+                trainAccu.append(epoch_acc)
+            else:
+                valLoss.append(epoch_loss)
+                valAccu.append(epoch_acc)
+
             # deep copy the model
             if phase == 'val' and epoch_acc > best_acc:
                 best_acc = epoch_acc
@@ -68,7 +83,24 @@ def train_model(model,dataloaders, dataset_sizes, device, criterion, optimizer, 
     print('Training complete in {:.0f}m {:.0f}s'.format(
         time_elapsed // 60, time_elapsed % 60))
     print('Best val Acc: {:4f}'.format(best_acc))
+    plotData = {'trainLoss' : trainLoss, 'trainAccu' : trainAccu, 'valLoss' : valLoss,'valAccu' : valAccu }
 
     # load best model weights
     model.load_state_dict(best_model_wts)
-    return model
+    return model, plotData
+
+
+
+def PlotGraph(plotData):
+    fig, (axs1,axs2) = plt.subplots(2, 1,figsize=(15,10))
+    axs1.plot(plotData['trainLoss'], label = " Train")
+    axs1.plot(plotData['valLoss'], label = " Test")
+    axs1.set_title("Loss")
+
+    axs2.plot(plotData['trainAccu'], label = " Train")
+    axs2.plot(plotData['valAccu'], label = " Test")
+    axs2.set_title("Accuracy")
+
+    axs1.legend()
+    axs2.legend()
+    plt.show()
