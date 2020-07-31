@@ -41,3 +41,38 @@ def colorize(value, vmin=10, vmax=1000, cmap='plasma'):
     img = value[:,:,:3]
 
     return img.transpose((2,0,1))
+
+
+
+def MissClassifedImage(dataSet, model,device, dispCount,classes):
+  dataiter = iter(dataSet)
+  import matplotlib.pyplot as plt
+  import numpy as np
+  #from GradCam import show_map
+  import matplotlib.pyplot as plt
+
+
+  fig, axs = plt.subplots(dispCount,1,figsize=(10,60))
+  count =0
+  while True:
+      if count >= dispCount:
+        break
+      images, labels = dataiter.next()
+      imagex = images
+      images, labels = images.to(device), labels.to(device)
+      model= model.to(device)
+      output = model(images)
+      imagex = images
+      a, predicted = torch.max(output, 1) 
+      if(labels != predicted):
+        imagex = imagex.squeeze()  
+        imagex = np.transpose(imagex, (1, 2, 0))
+        axs[count,0].imshow(imagex)
+        # images = images.squeeze()  
+        # images =images.cpu()
+        # images = np.transpose(images, (1, 2, 0))
+        # axs[count,0].imshow(images)
+        axs[count,0].set_title("Orig: "+str(classes[labels])+", Pred: "+str(classes[predicted]))
+        fig.tight_layout(pad=3.0)
+        count = count +1
+  plt.show()
