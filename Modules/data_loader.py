@@ -17,7 +17,7 @@ class DroneDataset(Dataset):
             data_file = open('testData.csv','r')
         
         self.data = list(csv.reader(data_file))
-        self.classes = ['Large QuadCopters', 'Flying Birds', 'Small QuadCopters', 'Winged Drones']
+        self.classes = ['Flying Birds', 'Large QuadCopters', 'Small QuadCopters', 'Winged Drones']
 
     def __len__(self):
         return len(self.data)

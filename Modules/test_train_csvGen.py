@@ -10,6 +10,8 @@ def split_test_train_data(rootImageDir, tstRatio = 0.1):
 	trnFile = open('trainData.csv','w', newline='')
 	writertrn =csv.writer(trnFile)
 	dirs = os.listdir(rootImageDir)
+    # Sorting the list as os.listdir return different order everytime.
+	dirs.sort()
 	print(dirs)
 	dircnt = 0
 	for fldr in dirs:
