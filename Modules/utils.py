@@ -44,35 +44,39 @@ def colorize(value, vmin=10, vmax=1000, cmap='plasma'):
 
 
 
-def MissClassifedImage(dataSet, model,device, dispCount,classes):
-  dataiter = iter(dataSet)
-  import matplotlib.pyplot as plt
-  import numpy as np
-  #from GradCam import show_map
-  import matplotlib.pyplot as plt
+
+import matplotlib.pyplot as plt
+import numpy as np
+import torch
+
+def ShowMissclassifiedImages(model, dataloaders, class_names, device,dataType='val', num_images=36):
+    was_training = model.training
+    model.eval()
+    images_so_far = 0
+    fig, axs = plt.subplots(int(num_images/4),4,figsize=(35,35))
+    with torch.no_grad():
+        for i, (inputs, labels) in enumerate(dataloaders[dataType]):
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+
+            outputs = model(inputs)
+            _, preds = torch.max(outputs, 1)
+
+            for j in range(inputs.size()[0]):
+                if preds[j] != labels[j]:
+                  
+                  row = int((images_so_far)/4)
+                  col = (images_so_far)%4
+                  imagex = inputs.cpu().data[j]
+                  imagex = np.transpose(imagex, (1, 2, 0))
+                  axs[row,col].imshow(imagex)
+                  fig.tight_layout(pad=2.0)
+                  axs[row,col].set_title('Predicted: {} \n Actual: {}'.format(class_names[preds[j]],class_names[labels[j]]))
+                  images_so_far += 1
+                  if images_so_far == num_images:
+                      model.train(mode=was_training)
+                      plt.show()
+                      return
+        model.train(mode=was_training)
 
 
-  fig, axs = plt.subplots(dispCount,1,figsize=(10,60))
-  count =0
-  while True:
-      if count >= dispCount:
-        break
-      images, labels = dataiter.next()
-      imagex = images
-      images, labels = images.to(device), labels.to(device)
-      model= model.to(device)
-      output = model(images)
-      imagex = images
-      a, predicted = torch.max(output, 1) 
-      if(labels != predicted):
-        imagex = imagex.squeeze()  
-        imagex = np.transpose(imagex, (1, 2, 0))
-        axs[count,0].imshow(imagex)
-        # images = images.squeeze()  
-        # images =images.cpu()
-        # images = np.transpose(images, (1, 2, 0))
-        # axs[count,0].imshow(images)
-        axs[count,0].set_title("Orig: "+str(classes[labels])+", Pred: "+str(classes[predicted]))
-        fig.tight_layout(pad=3.0)
-        count = count +1
-  plt.show()
