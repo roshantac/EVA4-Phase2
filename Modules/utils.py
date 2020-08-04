@@ -1,6 +1,8 @@
 import matplotlib
 import matplotlib.cm
 import numpy as np
+import matplotlib.pyplot as plt
+import torch
 
 def DepthNorm(depth, maxDepth=1000.0): 
     return maxDepth / depth
@@ -43,11 +45,6 @@ def colorize(value, vmin=10, vmax=1000, cmap='plasma'):
     return img.transpose((2,0,1))
 
 
-
-
-import matplotlib.pyplot as plt
-import numpy as np
-import torch
 
 def ShowMissclassifiedImages(model, dataloaders, class_names, device,dataType='val', num_images=36):
     was_training = model.training
