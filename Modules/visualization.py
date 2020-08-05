@@ -40,8 +40,8 @@ def visualize_model(model, dataloaders, class_names, device, num_images=6):
 def imshow(inp, title=None):
     """Imshow for Tensor."""
     inp = inp.numpy().transpose((1, 2, 0))
-    mean = np.array([0.485, 0.456, 0.406])
-    std = np.array([0.229, 0.224, 0.225])
+    mean = np.array([0.5404, 0.5918, 0.6219])
+    std = np.array([0.2771, 0.2576, 0.2998])
     inp = std * inp + mean
     inp = np.clip(inp, 0, 1)
     plt.imshow(inp)
