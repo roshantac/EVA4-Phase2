@@ -33,6 +33,64 @@ Curated dataset from Kaggle, google, youtube video meeting all the requirements.
     - Renamed the files into consistent naming convention and mapping file for classes.
     - Curated dataset link: https://drive.google.com/drive/folders/1Xcfk3bJpMkoruQAiY7IJQQkAy0u0CX6u
 
+3. Data Structure
+After clean-up, the images collected where placed in to 4 folders
+    - Flying Birds
+    - Large Quadcopters
+    - Small Quadcopters
+    - Winged Drones
+All images are placed are zipped and present at https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
+Data processing also creates 2 files programatically using code present in test_train_csvGen.py
+
+datset.csv files - contains list of images and the corresponding class name. 
+img_class.csv - contains list of all images and their respective classes
+
+4. Calculate mean and standard deviation for the dataset
+     Calculated mean and standard deviation across all images. this gets used in data tranforms
+     
+5. Prepare data for training and testing
+Split image data as  train data and test data
+These data are stored respectively  trainData.csv and testData.csv
+Based on parameter passed to DroneSet, the corresponding data gets loads
+
+6. Load images in to dataset along with transforms
+Created DroneSet class that inherits from torch.utils.data.Dataset to perform 
+    - Takes as input : train parameter, class names and transforms
+    - Load image data based on value of boolean flag train , train data or test data
+    - Load Class names
+    - Perform required transforms on images data 
+    - Visualize images
+
+7. Load model and determine lr hyper parameter that is passed as input to optimizer and scheduler used in training
+    - Load mobilenet_v2 with pertained option as true
+    - Set value of model parameters requires_grad = False
+    - Reconstruct final fully connected layer. #Parameters of newly constructed modules have requires_grad=True by default
+    - Pass model to LRFinder(torch-lr-finder)
+    - Plot LR values reported by LRFinder
+    - Run range_test to determine lr value  using  train dataset
+
+8. Setup Optimizer as SGD optimiser and Scheduler as OneCycleLR
+    - only parameters of final layer are being optimized 
+    - Decay LR by a factor of 0.1 every 7 epochs
+
+9. Train model using train_model function present in train.py for 24 epochs
+    - Returns model, loss and accuracy
+    - Plot Loss and Accuracy for the train model
+    - Visualize images
+10. Load model
+    - Set value of model parameters requires_grad = False
+    - Pass model to LRFinder(torch-lr-finder)
+    - Plot LR values reported by LRFinder
+    - Run range_test to determine lr value  using  train dataset
+11. Train model using train_model function present in train.py for 24 epochs
+    - Returns model, loss and accuracy
+    - Plot Loss and Accuracy for the train model
+    - Visualize images
+12. Find and Display misclassified images
+13. Save model
+    - Save model
+    - Please confirm the saved model can be loaded and evaludated again.
+
 ## 3. References
 
 1. [Image utils developed by Ramjee Gantir](https://github.com/gantir/image_utils/blob/master/utils.py)
