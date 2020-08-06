@@ -42,15 +42,15 @@ After clean-up, the images collected where placed in to 4 folders
     - Small Quadcopters   
     - Winged Drones   
 
-3a. All images zipped present at  https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
+4. All images zipped present at  https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
     - **datset.csv**  - contains list of images and the corresponding class name. Created by program present in test_train_csvGen.py
     - **img_class.csv** - contains list of all images and their respective classes. Created by program present in test_train_csvGen.py
 
-4. Calculate mean and standard deviation for the dataset:
+5. Calculate mean and standard deviation for the dataset:
     - Calculated mean and standard deviation across all images. 
     - This gets used in data tranforms
      
-5. Create DroneDataSet at [data_loader.py]https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/data_loader.py
+6. Create DroneDataSet at [data_loader.py]https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/data_loader.py
 
    DroneSet class that inherits from torch.utils.data.Dataset and perform following
     - Takes as input : train parameter, class names and transforms
@@ -59,12 +59,12 @@ After clean-up, the images collected where placed in to 4 folders
     - Perform transforms on images data 
     - Visualize images
 
-6. Prepare data for training and testing:
+7. Prepare data for training and testing:
     - Split image data as  train data and test data
     - Store images respectively in trainData.csv and testData.csv
     - Based on input parameter passed to DroneSet, the corresponding data gets loads
 
-7. Load **mobilenet_v2** model and determine lr hyper parameter that is passed as input to optimizer and scheduler used in training:
+8. Load **mobilenet_v2** model and determine lr hyper parameter that is passed as input to optimizer and scheduler used in training:
     - Load  model with **pertained option = true**
     - Set value of model parameters **requires_grad = False**
     - Reconstruct final fully connected layer. 
@@ -73,29 +73,29 @@ After clean-up, the images collected where placed in to 4 folders
     - Plot LR values reported by LRFinder
     - Run range_test to determine lr value  using  train dataset
 
-8. Setup Optimizer as **SGD optimiser** and Scheduler as **OneCycleLR**
+9. Setup Optimizer as **SGD optimiser** and Scheduler as **OneCycleLR**
     - only parameters of final layer are being optimized 
     - Decay LR by a factor of 0.1 every 7 epochs
 
-9. Train using train_model function present in [train.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/train.py) for 25 epochs:
+10. Train by train_model function present in [train.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/train.py) for 25 epochs:
     - Returns model, loss and accuracy
     - Plot Loss and Accuracy for the train model
     - Visualize images
     
-10. Load **mobilenet_v2** model:
+11. Load **mobilenet_v2** model:
     - Set value of model parameters **requires_grad = False**
     - Pass model to LRFinder(torch-lr-finder)
     - Plot LR values reported by LRFinder
     - Run range_test to determine lr value  using  train dataset
 
-11. Train using train_model function present in [train.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/train.py) for 25 epochs
+12. Train by train_model function present in [train.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/train.py) for 25 epochs
     - Returns model, loss and accuracy
     - Plot Loss and Accuracy for the train model
     - Visualize images
 
-12. Find and Display misclassified images
+13. Find and Display misclassified images
 
-13. Save model
+14. Save model
     - Save model
     - Please confirm the saved model can be loaded and evaludated again.
 
