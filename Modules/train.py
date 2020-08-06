@@ -92,7 +92,6 @@ def train_model(model,dataloaders, dataset_sizes, device, criterion, optimizer, 
 
 
 def PlotGraph(plotData,save_as):
-    plot_image = plt.figure()
     fig, (axs1,axs2) = plt.subplots(2, 1,figsize=(15,10))
     axs1.plot(plotData['trainLoss'], label = " Train")
     axs1.plot(plotData['valLoss'], label = " Test")
@@ -105,4 +104,4 @@ def PlotGraph(plotData,save_as):
     axs1.legend()
     axs2.legend()
     plt.show()
-    plot_image.savefig(save_as)
+    fig.savefig(save_as)
