@@ -4,7 +4,7 @@
 ## 1. Executive Summary
 **Group Members:** *Ramjee Ganti, Srinivasan G, Roshan, Dr. Rajesh and Sujit Ojha* 
 
-### **Objective**:
+### **Objectives**:
 
 - Group challenge involving data curation for different flying objects like bird, drones. Our group target is to curate 1000 images of large quadcopter.
 - Train mobilenet_v2 model for custom dataset
