@@ -50,8 +50,8 @@ Data processing also creates 2 files programatically using code present in test_
     - Calculated mean and standard deviation across all images. 
     - This gets used in data tranforms
      
-5. Load images in to dataset along with transforms
-Created DroneSet class that inherits from torch.utils.data.Dataset to perform 
+5. Create DroneDataSet at [data_loader.py]https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/data_loader.py
+   DroneSet class that inherits from torch.utils.data.Dataset and perform following
     - Takes as input : train parameter, class names and transforms
     - Load image data based on value of boolean flag train , train data or test data
     - Load Class names
@@ -76,7 +76,7 @@ Created DroneSet class that inherits from torch.utils.data.Dataset to perform
     - only parameters of final layer are being optimized 
     - Decay LR by a factor of 0.1 every 7 epochs
 
-9. Train model using train_model function present in train.py for 24 epochs
+9. Train using train_model function present in [train.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/train.py) for 25 epochs
     - Returns model, loss and accuracy
     - Plot Loss and Accuracy for the train model
     - Visualize images
@@ -87,7 +87,7 @@ Created DroneSet class that inherits from torch.utils.data.Dataset to perform
     - Plot LR values reported by LRFinder
     - Run range_test to determine lr value  using  train dataset
 
-11. Train model using train_model function present in train.py for 24 epochs
+11. Train using train_model function present in [train.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/train.py) for 25 epochs
     - Returns model, loss and accuracy
     - Plot Loss and Accuracy for the train model
     - Visualize images
