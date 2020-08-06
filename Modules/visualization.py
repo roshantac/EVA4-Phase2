@@ -49,3 +49,17 @@ def imshow(inp, title=None):
     if title is not None:
         plt.title(title[:4])
     plt.pause(0.001)  # pause a bit so that plots are updated
+
+def imshow_save(inp, save_as="sample.jpg",title=None):
+    
+    inp = inp.numpy().transpose((1, 2, 0))
+    mean = np.array([0.5404, 0.5918, 0.6219])
+    std = np.array([0.2771, 0.2576, 0.2998])
+    inp = std * inp + mean
+    inp = np.clip(inp, 0, 1)
+    figure = plt.figure()
+    plt.imshow(inp)
+    if title is not None:
+        plt.title(title[:4])
+    plt.pause(0.001)  # pause a bit so that plots are updated
+    figure.savefig(save_as)
