@@ -37,10 +37,10 @@
 3. Data Structure:    
 
 After clean-up, the images collected where placed in to 4 folders    
-    - Flying Birds
-    - Large Quadcopters
-    - Small Quadcopters
-    - Winged Drones
+    - Flying Birds  
+    - Large Quadcopters   
+    - Small Quadcopters   
+    - Winged Drones   
     - All images are zipped in to  https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
 
 
