@@ -43,11 +43,12 @@ After clean-up, the images collected where placed in to 4 folders
     - Winged Drones
     - All images are zipped in to  https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
 
-3.B. Data files:    
+
+Data files:    
 
 Data processing also creates 2 files programatically using code present in test_train_csvGen.py
-- **datset.csv**  - contains list of images and the corresponding class name. 
-- **img_class.csv** - contains list of all images and their respective classes
+    - **datset.csv**  - contains list of images and the corresponding class name. 
+    - **img_class.csv** - contains list of all images and their respective classes
 
 4. Calculate mean and standard deviation for the dataset:
     - Calculated mean and standard deviation across all images. 
