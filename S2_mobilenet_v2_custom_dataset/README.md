@@ -34,7 +34,7 @@
     - Renamed the files into consistent naming convention and mapping file for classes.
     - Curated dataset link: https://drive.google.com/drive/folders/1Xcfk3bJpMkoruQAiY7IJQQkAy0u0CX6u
 
-3a. Data Structure:    
+3.A. Data Structure:    
 
 After clean-up, the images collected where placed in to 4 folders    
     - Flying Birds
@@ -43,7 +43,7 @@ After clean-up, the images collected where placed in to 4 folders
     - Winged Drones
     - All images are zipped in to  https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
 
-3b. Data files:    
+3.B. Data files:    
 
 Data processing also creates 2 files programatically using code present in test_train_csvGen.py
 - **datset.csv**  - contains list of images and the corresponding class name. 
