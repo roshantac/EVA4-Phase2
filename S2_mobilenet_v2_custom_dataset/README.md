@@ -78,7 +78,9 @@
     - Returns model, loss and accuracy
     - Plot Loss and Accuracy for the train model
     - Visualize images
-    
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/loss_accuracy_1.jpg)
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/visualize_1.jpg)
+
 11. Load **mobilenet_v2** model:
     - Set value of model parameters **requires_grad = False**
     - Pass model to LRFinder(torch-lr-finder)
@@ -89,9 +91,14 @@
     - Returns model, loss and accuracy
     - Plot Loss and Accuracy for the train model
     - Visualize images
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/loss_accuracy_2.jpg)
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/visualize_2.jpg)
 
 13. Find and Display misclassified images
-
+    - Find misclassified images
+    - Display misclassified images
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/misclassified.jpg)
+ 
 14. Save model
     - Save model
     - Please confirm the saved model can be loaded and evaludated again.
