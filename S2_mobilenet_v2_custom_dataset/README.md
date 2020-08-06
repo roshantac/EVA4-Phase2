@@ -24,7 +24,7 @@
 ## 2. Steps (Developer Section)
 
 1. Data Curation:
-     -Curated dataset from Kaggle, google, youtube video meeting all the requirements.
+     - Curated dataset from Kaggle, google, youtube video meeting all the requirements.
 
 2. Data preprocessing & Cleanup:
     - Image with size > 448 pixel is resized to 448 pixel, keeping aspect ratio same.
