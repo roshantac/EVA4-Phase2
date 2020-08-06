@@ -66,7 +66,8 @@ Created DroneSet class that inherits from torch.utils.data.Dataset to perform
 7. Load **mobilenet_v2** model and determine lr hyper parameter that is passed as input to optimizer and scheduler used in training
     - Load  model with **pertained option = true**
     - Set value of model parameters **requires_grad = False**
-    - Reconstruct final fully connected layer. Parameters of **newly constructed modules have requires_grad=True by default**
+    - Reconstruct final fully connected layer. 
+    -   - Parameters of **newly constructed modules have requires_grad=True by default**
     - Pass model to LRFinder(torch-lr-finder)
     - Plot LR values reported by LRFinder
     - Run range_test to determine lr value  using  train dataset
