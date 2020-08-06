@@ -34,7 +34,7 @@
     - Renamed the files into consistent naming convention and mapping file for classes.
     - Curated dataset link: https://drive.google.com/drive/folders/1Xcfk3bJpMkoruQAiY7IJQQkAy0u0CX6u
 
-3.A. Data Structure:    
+3. Data Structure:    
 
 After clean-up, the images collected where placed in to 4 folders    
     - Flying Birds
