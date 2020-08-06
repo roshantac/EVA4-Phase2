@@ -11,11 +11,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-def visualize_model(model, dataloaders, class_names, device, num_images=6):
+def visualize_model(model, dataloaders, class_names, device, num_images=6,save_as="visualize.jpg"):
     was_training = model.training
     model.eval()
     images_so_far = 0
-    fig = plt.figure()
+    figure = plt.figure()
 
     with torch.no_grad():
         for i, (inputs, labels) in enumerate(dataloaders['val']):
@@ -34,6 +34,7 @@ def visualize_model(model, dataloaders, class_names, device, num_images=6):
 
                 if images_so_far == num_images:
                     model.train(mode=was_training)
+                    figure.savefig(save_as)
                     return
         model.train(mode=was_training)
 
