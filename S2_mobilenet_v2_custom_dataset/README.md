@@ -34,24 +34,21 @@
     - Renamed the files into consistent naming convention and mapping file for classes.
     - Curated dataset link: https://drive.google.com/drive/folders/1Xcfk3bJpMkoruQAiY7IJQQkAy0u0CX6u
 
-3. Data Structure:    
-
-After clean-up, the images collected where placed in to 4 folders    
+3. Data Structure:  After clean-up, the images collected where placed in to 4 folders wthin zip file with root as final_images
     - Flying Birds  
     - Large Quadcopters   
     - Small Quadcopters   
     - Winged Drones   
 
-4. All images zipped present at  https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
+4. All images zipped present at  [final_images_ver2.zip](https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip)
     - **datset.csv**  - contains list of images and the corresponding class name. Created by program present in test_train_csvGen.py
     - **img_class.csv** - contains list of all images and their respective classes. Created by program present in test_train_csvGen.py
 
-5. Calculate mean and standard deviation for the dataset:
+5. Calculate mean and standard deviation for the dataset [find_mean_stddev.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/find_mean_stddev.py)
     - Calculated mean and standard deviation across all images. 
     - This gets used in data tranforms
      
-6. Create DroneDataSet at [data_loader.py]https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/data_loader.py
-
+6. Create DroneDataSet at [data_loader.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/data_loader.py)
    DroneSet class that inherits from torch.utils.data.Dataset and perform following
     - Takes as input : train parameter, class names and transforms
     - Load image data based on value of boolean flag train , train data or test data
