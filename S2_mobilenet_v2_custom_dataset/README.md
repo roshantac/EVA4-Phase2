@@ -41,7 +41,8 @@ After clean-up, the images collected where placed in to 4 folders
     - Large Quadcopters   
     - Small Quadcopters   
     - Winged Drones   
-    - All images are zipped in to  https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
+
+3a. All images zipped present at  https://github.com/EVA4-RS-Group/Phase2/releases/download/s2/final_images_ver2.zip
     - **datset.csv**  - contains list of images and the corresponding class name. Created by program present in test_train_csvGen.py
     - **img_class.csv** - contains list of all images and their respective classes. Created by program present in test_train_csvGen.py
 
