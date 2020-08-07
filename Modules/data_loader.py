@@ -127,7 +127,7 @@ class LoadDataset():
     def show_batch(self):
         # Get a batch of training data
         inputs, classes = next(iter(self.dataloaders['train']))
-        images = denormalize(data,mean=(0.5404, 0.5918, 0.6219),std=(0.2771, 0.2576, 0.2998)).cpu().numpy()
+        images = denormalize(inputs,mean=(0.5404, 0.5918, 0.6219),std=(0.2771, 0.2576, 0.2998)).cpu().numpy()
 
         counter=0
         fig = plt.figure(figsize=(10, 10))
