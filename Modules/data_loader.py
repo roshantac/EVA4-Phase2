@@ -192,7 +192,7 @@ class LoadDataset():
         self.class_names = self.trainSet.classes
         #print(self.class_names)
 
-    def show_batch(self):
+    def show_batch(self, save_as="sample.jpg"):
         """Show five sample images for verification of dataloaders.
 
         Get item internal fuction
@@ -213,7 +213,7 @@ class LoadDataset():
             counter+=1
         fig.tight_layout()  
         plt.show()
-
+        fig.savefig(save_as)
         #imshow_save(out, save_as="sample.jpg",title=[class_names[int(x)] for x in classes[0:4]])
 
 
