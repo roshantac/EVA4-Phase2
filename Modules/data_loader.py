@@ -90,7 +90,7 @@ class DroneDataset(Dataset):
             image = self.transform(Image.fromarray(image))
         return image, target
 
-class LoadDataset:
+class LoadDataset():
     def __init__(self, dir, tstRatio, batch_size):
         self.dir = dir
         self.tstRatio = tstRatio
