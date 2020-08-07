@@ -104,16 +104,16 @@ class LoadDataset():
         tstTransform = data_transforms['val']
         self.testSet = DroneDataset(train= False, transform = tstTransform)
 
-        self.dataloaders = {'train': torch.utils.data.DataLoader(trainSet, batch_size= batch_size, 
+        self.dataloaders = {'train': torch.utils.data.DataLoader(self.trainSet, batch_size= batch_size, 
                                                             shuffle=True, num_workers=4),
-                    'val': torch.utils.data.DataLoader(testSet, batch_size= batch_size,
+                    'val': torch.utils.data.DataLoader(self.testSet, batch_size= batch_size,
                                                 shuffle=True, num_workers=4)}
 
-        self.dataset_sizes = {'train': len(trainSet),
-                        'val':len(testSet)}
+        self.dataset_sizes = {'train': len(self.trainSet),
+                        'val':len(self.testSet)}
 
-        self.class_names = trainSet.classes
-        print(class_names)
+        self.class_names = self.trainSet.classes
+        print(self.class_names)
 
 
 
