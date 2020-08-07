@@ -1,4 +1,4 @@
-""" Code to calculate the mean and standard deviation of dataset.
+"""Code to calculate the mean and standard deviation of dataset.
 
 Author: Srinivasan G
 """
@@ -9,7 +9,7 @@ import time
 
 
 def find_mean_standard_deviation(image_dir):
-    """Returns the mean and standard deviation of dataset.
+    """Return the mean and standard deviation of dataset.
 
     Mean and Standard Deviation required for image normalization.
 
@@ -22,7 +22,6 @@ def find_mean_standard_deviation(image_dir):
     Raises:
         No Exception
     """
-
     since = time.time()
 
     n = 0
