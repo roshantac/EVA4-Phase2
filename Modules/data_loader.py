@@ -90,6 +90,15 @@ class DroneDataset(Dataset):
             image = self.transform(Image.fromarray(image))
         return image, target
 
+def denormalize(tensor, mean, std):
+    if not tensor.ndimension() == 4:
+        raise TypeError('tensor should be 4D')
+
+    mean = torch.FloatTensor(mean).view(1, 3, 1, 1).expand_as(tensor).to(tensor.device)
+    std = torch.FloatTensor(std).view(1, 3, 1, 1).expand_as(tensor).to(tensor.device)
+
+    return tensor.mul(std).add(mean)
+
 class LoadDataset():
     def __init__(self, dir, tstRatio, batch_size):
         self.dir = dir
@@ -113,7 +122,30 @@ class LoadDataset():
                         'val':len(self.testSet)}
 
         self.class_names = self.trainSet.classes
-        print(self.class_names)
+        #print(self.class_names)
+
+    def show_batch(self):
+        # Get a batch of training data
+        inputs, classes = next(iter(self.dataloaders['train']))
+        images = denormalize(data,mean=(0.5404, 0.5918, 0.6219),std=(0.2771, 0.2576, 0.2998)).cpu().numpy()
+
+        counter=0
+        fig = plt.figure(figsize=(10, 10))
+
+        while(counter<5):
+            ax = fig.add_subplot(1, 5, counter, xticks=[], yticks=[])
+
+            img = images[counter]
+            npimg = np.transpose(img,(1,2,0))
+            ax.imshow(npimg, cmap='gray')
+            ax.set_title(f'Label = {classes[counter]}',
+                        color= "blue")
+        
+            counter+=1
+        fig.tight_layout()  
+        plt.show()
+
+        #imshow_save(out, save_as="sample.jpg",title=[class_names[int(x)] for x in classes[0:4]])
 
 
 
