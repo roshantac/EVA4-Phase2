@@ -50,7 +50,7 @@ def ShowMissclassifiedImages(model, dataloaders, class_names, class_id, device,d
     was_training = model.training
     model.eval()
     images_so_far = 0
-    fig, axs = plt.subplots(int(num_images/4),4,figsize=(35,35))
+    fig, axs = plt.subplots(int(num_images/4),4,figsize=(20,20))
     with torch.no_grad():
         for i, (inputs, labels) in enumerate(dataloaders[dataType]):
             inputs = inputs.to(device)
