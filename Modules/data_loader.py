@@ -1,5 +1,7 @@
-# Author : Roshan
+"""Code to define the dataset, dataloader and show sample images.
 
+Author: Roshan
+"""
 
 import csv
 from PIL import Image
@@ -33,6 +35,20 @@ data_transforms = {
 
 
 def split_test_train_data(rootImageDir, tstRatio = 0.1):
+    """Split the classification folder into train and validation subset.
+
+    Random split with given ratio for train and validation
+
+    Args:
+        rootImageDir: Input directory containing all image
+        tstRatio: Percentage of train and validation subset
+
+    Returns:
+        None
+
+    Raises:
+        No Exception
+    """
     tstFile = open('testData.csv','w', newline='')
     writertst =csv.writer(tstFile)
     trnFile = open('trainData.csv','w', newline='')
@@ -65,7 +81,16 @@ def split_test_train_data(rootImageDir, tstRatio = 0.1):
         dircnt +=1
 
 class DroneDataset(Dataset):
+    """Define Drone Dataset class to get images and labels .
+
+    Dataset classes
+    """
+
     def __init__(self, train=True, transform = None):
+        """Initialize the class object.
+
+        Dataset class ojbect
+        """
         self.transform = transform
         if (train == True):
             data_file = open('trainData.csv','r')
@@ -76,9 +101,17 @@ class DroneDataset(Dataset):
         self.classes = ['Flying Birds', 'Large QuadCopters', 'Small QuadCopters', 'Winged Drones']
 
     def __len__(self):
+        """Return length of dataset.
+
+        Length internal fuction
+        """
         return len(self.data)
 
     def __getitem__(self,idx):
+        """Return dataset image and its label.
+
+        Get item internal fuction
+        """
         imgLoc, target =self.data[idx][0], int(self.data[idx][2])
         image = np.array(Image.open(imgLoc))
         # print(f"idx:{idx}")
@@ -92,6 +125,19 @@ class DroneDataset(Dataset):
         return image, target
 
 def denormalize(tensor, mean, std):
+    """Denormalize the image for given mean and standard deviation.
+
+    Args:
+        tensor: Image tensor
+        mean: Dataset mean
+        std: Dataset standard deviation
+
+    Returns:
+        tensor
+
+    Raises:
+        No Exception
+    """
     if not tensor.ndimension() == 4:
         raise TypeError('tensor should be 4D')
 
@@ -101,7 +147,28 @@ def denormalize(tensor, mean, std):
     return tensor.mul(std).add(mean)
 
 class LoadDataset():
+    """
+    A class to dataset with its loader.
+
+    ...
+
+    Attributes
+    ----------
+    dataloaders : torch dataloader
+    dataset_sizes : length of train and validation dataset
+    class_names : class names
+
+    Methods
+    -------
+    show_batch:
+        Shows five sample images for verification of dataloaders
+    """
+
     def __init__(self, dir, tstRatio, batch_size):
+        """Initialize the class object.
+
+        Dataset class ojbect
+        """
         self.dir = dir
         self.tstRatio = tstRatio
         self.batch_size = batch_size
@@ -126,25 +193,27 @@ class LoadDataset():
         #print(self.class_names)
 
     def show_batch(self):
+        """Show five sample images for verification of dataloaders.
+
+        Get item internal fuction
+        """
         # Get a batch of training data
         inputs, classes = next(iter(self.dataloaders['train']))
         images = denormalize(inputs,mean=(0.5404, 0.5918, 0.6219),std=(0.2771, 0.2576, 0.2998)).cpu().numpy()
 
         counter=0
-        fig = plt.figure(figsize=(10, 10))
+        fig = plt.figure(figsize=(12, 20))
 
         while(counter<5):
             ax = fig.add_subplot(1, 5, counter+1, xticks=[], yticks=[])
             img = images[counter]
             npimg = np.clip(np.transpose(img,(1,2,0)), 0, 1)
             ax.imshow(npimg, cmap='gray')
-            ax.set_title(f'Label = {self.class_names[classes[counter]]}', color= "blue")
+            ax.set_title(f'{self.class_names[classes[counter]]}', color= "blue")
             counter+=1
         fig.tight_layout()  
         plt.show()
 
         #imshow_save(out, save_as="sample.jpg",title=[class_names[int(x)] for x in classes[0:4]])
-
-
 
 
