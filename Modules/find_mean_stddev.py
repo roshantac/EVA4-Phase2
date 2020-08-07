@@ -29,7 +29,7 @@ def find_mean_standard_deviation(image_dir):
     sq = np.zeros(3)
 
     #data_dir = os.chdir(image_dir)
-    image_folders = os.listdir()
+    image_folders = os.listdir(image_dir)
     print(f'Sub-folders: {image_folders}')
 
     for sub_dir in image_folders:
