@@ -46,7 +46,7 @@ def colorize(value, vmin=10, vmax=1000, cmap='plasma'):
 
 
 
-def ShowMissclassifiedImages(model, dataloaders, class_names, device,dataType='val', num_images=36,save_as="misclassified.jpg"):
+def ShowMissclassifiedImages(model, dataloaders, class_names, class_id, device,dataType='val', num_images=12,save_as="misclassified.jpg"):
     was_training = model.training
     model.eval()
     images_so_far = 0
@@ -55,18 +55,19 @@ def ShowMissclassifiedImages(model, dataloaders, class_names, device,dataType='v
         for i, (inputs, labels) in enumerate(dataloaders[dataType]):
             inputs = inputs.to(device)
             labels = labels.to(device)
-
             outputs = model(inputs)
             _, preds = torch.max(outputs, 1)
-
+              
             for j in range(inputs.size()[0]):
-                if preds[j] != labels[j]:
-                  
+                if((preds[j] != labels[j]) and (labels[j] == class_id)):
                   row = int((images_so_far)/4)
                   col = (images_so_far)%4
                   imagex = inputs.cpu().data[j]
                   imagex = np.transpose(imagex, (1, 2, 0))
-                  axs[row,col].imshow(imagex)
+                  imagex=imagex.numpy()
+                  imagex = imagex/np.amax(imagex)
+                  imagex = np.clip(imagex, 0, 1)       
+                  axs[row,col].imshow(imagex) 
                   fig.tight_layout(pad=2.0)
                   axs[row,col].set_title('Predicted: {} \n Actual: {}'.format(class_names[preds[j]],class_names[labels[j]]))
                   images_so_far += 1
