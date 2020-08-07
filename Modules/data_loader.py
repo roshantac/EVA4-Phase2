@@ -1,4 +1,4 @@
-# @uther : Roshan
+# Author : Roshan
 
 
 import csv
@@ -6,7 +6,62 @@ from PIL import Image
 import torch
 from torch.utils.data import Dataset
 import numpy as np
+from torchvision import datasets, models, transforms
+import os
+import glob
+import csv
+import random
 
+data_transforms = {
+    'train': transforms.Compose([
+        transforms.RandomResizedCrop(224),
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        transforms.Normalize([0.53713346, 0.58979464, 0.62127595],
+                             [0.27420551, 0.25534403, 0.29759673])
+    ]),
+    'val': transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize([0.53713346, 0.58979464, 0.62127595],
+                             [0.27420551, 0.25534403, 0.29759673])
+    ]),
+}
+
+
+
+def split_test_train_data(rootImageDir, tstRatio = 0.1):
+    tstFile = open('testData.csv','w', newline='')
+    writertst =csv.writer(tstFile)
+    trnFile = open('trainData.csv','w', newline='')
+    writertrn =csv.writer(trnFile)
+    dirs = os.listdir(rootImageDir)
+    # Sorting the list as os.listdir return different order everytime.
+    dirs.sort()
+    print(dirs)
+    dircnt = 0
+    for fldr in dirs:
+        files = glob.glob(rootImageDir+'/'+fldr+'/*.*')
+        folderlen= len(files)
+        print(folderlen)
+        i = 0
+        test=[]
+        train=[]
+        random.shuffle(files)
+        for f in files:
+            if (i < folderlen*(1 - tstRatio)):
+                train.append(f)
+            else:
+                test.append(f)
+            i+=1
+        for filename in train:
+            filename = filename.replace('\\','/')
+            writertrn.writerow([filename,fldr,dircnt])
+        for filename in test:
+            filename = filename.replace('\\','/')
+            writertst.writerow([filename,fldr,dircnt])
+        dircnt +=1
 
 class DroneDataset(Dataset):
     def __init__(self, train=True, transform = None):
@@ -34,3 +89,32 @@ class DroneDataset(Dataset):
         if self.transform :
             image = self.transform(Image.fromarray(image))
         return image, target
+
+class LoadDataset:
+    def __init__(self, dir, tstRatio, batch_size):
+        self.dir = dir
+        self.tstRatio = tstRatio
+        self.batch_size = batch_size
+
+        split_test_train_data(dir, tstRatio)
+
+        trnTransform = data_transforms['train'] 
+        self.trainSet = DroneDataset(train=True, transform = trnTransform)
+
+        tstTransform = data_transforms['val']
+        self.testSet = DroneDataset(train= False, transform = tstTransform)
+
+        self.dataloaders = {'train': torch.utils.data.DataLoader(trainSet, batch_size= batch_size, 
+                                                            shuffle=True, num_workers=4),
+                    'val': torch.utils.data.DataLoader(testSet, batch_size= batch_size,
+                                                shuffle=True, num_workers=4)}
+
+        self.dataset_sizes = {'train': len(trainSet),
+                        'val':len(testSet)}
+
+        self.class_names = trainSet.classes
+        print(class_names)
+
+
+
+
