@@ -11,6 +11,7 @@ import os
 import glob
 import csv
 import random
+import matplotlib.pyplot as plt
 
 data_transforms = {
     'train': transforms.Compose([
