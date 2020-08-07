@@ -138,7 +138,7 @@ class LoadDataset():
             img = images[counter]
             npimg = np.transpose(img,(1,2,0))
             ax.imshow(npimg, cmap='gray')
-            ax.set_title(f'Label = {classes[counter]}', color= "blue")
+            ax.set_title(f'Label = {self.class_names[classes[counter]]}', color= "blue")
             counter+=1
         fig.tight_layout()  
         plt.show()
