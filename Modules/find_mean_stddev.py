@@ -28,7 +28,7 @@ def find_mean_standard_deviation(image_dir):
     s = np.zeros(3)
     sq = np.zeros(3)
 
-    data_dir = os.chdir(image_dir)
+    #data_dir = os.chdir(image_dir)
     image_folders = os.listdir()
     print(f'Sub-folders: {image_folders}')
 
