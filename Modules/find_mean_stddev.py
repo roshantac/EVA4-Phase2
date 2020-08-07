@@ -43,7 +43,7 @@ def find_mean_standard_deviation(image_dir):
                 n += x.shape[0]*x.shape[1]
     mean = s/n
     std_deviation = np.sqrt((sq/n - np.square(mean)))
-    print(f'Total number of images found : {n}')
+
     print(f'Mean: {mean}')
     print(f'Std: {std_deviation}')
     # print(mean, sq/n, std_deviation, n)
