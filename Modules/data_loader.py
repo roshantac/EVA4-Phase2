@@ -134,7 +134,7 @@ class LoadDataset():
         fig = plt.figure(figsize=(10, 10))
 
         while(counter<5):
-            ax = fig.add_subplot(1, 5, counter, xticks=[], yticks=[])
+            ax = fig.add_subplot(1, 5, counter+1, xticks=[], yticks=[])
             img = images[counter]
             npimg = np.transpose(img,(1,2,0))
             ax.imshow(npimg, cmap='gray')
