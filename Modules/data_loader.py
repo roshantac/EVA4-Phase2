@@ -134,13 +134,10 @@ class LoadDataset():
 
         while(counter<5):
             ax = fig.add_subplot(1, 5, counter, xticks=[], yticks=[])
-
             img = images[counter]
             npimg = np.transpose(img,(1,2,0))
             ax.imshow(npimg, cmap='gray')
-            ax.set_title(f'Label = {classes[counter]}',
-                        color= "blue")
-        
+            ax.set_title(f'Label = {classes[counter]}', color= "blue")
             counter+=1
         fig.tight_layout()  
         plt.show()
