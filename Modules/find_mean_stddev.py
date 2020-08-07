@@ -8,7 +8,7 @@ import numpy as np
 import time
 
 
-def find_mean_standard_deviation(image_dir) :
+def find_mean_standard_deviation(image_dir):
     """Returns the mean and standard deviation of dataset.
 
     Mean and Standard Deviation required for image normalization.
@@ -29,28 +29,26 @@ def find_mean_standard_deviation(image_dir) :
     s = np.zeros(3)
     sq = np.zeros(3)
 
-    data_dir = os.chdir(image_dir) 
+    data_dir = os.chdir(image_dir)
     image_folders = os.listdir()
     print(f'Sub-folders: {image_folders}')
 
-    for sub_dir in image_folders :
+    for sub_dir in image_folders:
         temp = image_dir + sub_dir
-        #current_dir = next(os.walk(temp))[2]
-        #file_count = 0
         for image_name in os.listdir(temp):
-            #file_count = file_count + 1
-            if image_name.endswith(".jpg"): 
-                img = Image.open(temp +"/" +image_name)
+            if image_name.endswith(".jpg"):
+                img = Image.open(temp + "/" + image_name)
                 x = np.array(img)/255
-                s += x.sum(axis=(0,1))
-                sq += np.sum(np.square(x), axis=(0,1))
+                s += x.sum(axis=(0, 1))
+                sq += np.sum(np.square(x), axis=(0, 1))
                 n += x.shape[0]*x.shape[1]
-            continue
-        #print(len(current_dir), file_count)
     mean = s/n
     std_deviation = np.sqrt((sq/n - np.square(mean)))
-    print(mean, sq/n, std_deviation, n)
-    
+    print(f'Total number of images found : {n}')
+    print(f'Mean: {mean}')
+    print(f'Std: {std_deviation}')
+    # print(mean, sq/n, std_deviation, n)
+
     time_elapsed = time.time() - since
     print('Processing completed in {:.0f}m {:.0f}s'.format(
         time_elapsed // 60, time_elapsed % 60))
