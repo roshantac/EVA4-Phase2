@@ -55,6 +55,7 @@
     - Calculated mean and standard deviation across all images. 
     
         **Mean : [0.53614524 0.58885578 0.62041911]**
+        
         **Std  : [0.27362225 0.25486343 0.2974289 ]**
     - This gets used in data tranforms
      
