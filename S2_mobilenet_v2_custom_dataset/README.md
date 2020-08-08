@@ -53,6 +53,7 @@
 
 5. Calculate mean and standard deviation for the dataset [find_mean_stddev.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/find_mean_stddev.py)
     - Calculated mean and standard deviation across all images. 
+    
         **Mean : [0.53614524 0.58885578 0.62041911]**
         **Std  : [0.27362225 0.25486343 0.2974289 ]**
     - This gets used in data tranforms
