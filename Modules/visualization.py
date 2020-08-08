@@ -51,7 +51,7 @@ def visualize_model(model, data, device, save_as="visualize.jpg"):
 
             inputs = denormalize(inputs,mean=(0.5404, 0.5918, 0.6219),std=(0.2771, 0.2576, 0.2998)).cpu().numpy()
 
-            for j in range(inputs.size()[0]):
+            for j in range(inputs.shape[0]):
                 images_so_far += 1
                 
                 img = inputs[j]
