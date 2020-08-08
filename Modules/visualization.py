@@ -11,11 +11,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-def visualize_model(model, dataloaders, class_names, device, num_images=6,save_as="visualize.jpg"):
+def visualize_model(model, data, device, num_images=5,save_as="visualize.jpg"):
+    dataloaders, class_names = data.dataloaders, data.class_names
     was_training = model.training
     model.eval()
     images_so_far = 0
-    figure = plt.figure()
+    figure = plt.figure(figsize=(6, 12))
 
     with torch.no_grad():
         for i, (inputs, labels) in enumerate(dataloaders['val']):
@@ -27,9 +28,9 @@ def visualize_model(model, dataloaders, class_names, device, num_images=6,save_a
 
             for j in range(inputs.size()[0]):
                 images_so_far += 1
-                ax = plt.subplot(num_images//2, 2, images_so_far)
+                ax = plt.subplot(1, 5, images_so_far)
                 ax.axis('off')
-                ax.set_title('predicted: {}'.format(class_names[preds[j]]))
+                ax.set_title('predicted: {}'.format(class_names[preds[j]]),fontsize=14)
                 imshow(inputs.cpu().data[j])
 
                 if images_so_far == num_images:
@@ -37,6 +38,8 @@ def visualize_model(model, dataloaders, class_names, device, num_images=6,save_a
                     figure.savefig(save_as)
                     return
         model.train(mode=was_training)
+    figure.tight_layout()  
+    plt.show()
 
 def imshow(inp, title=None):
     """Imshow for Tensor."""
