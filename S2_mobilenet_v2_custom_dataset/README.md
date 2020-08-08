@@ -104,13 +104,15 @@
 13. Find and Display misclassified images from each classes
     - Find misclassified images
     - Display misclassified images
-                                   ####  **MisclassifiedFlyingBirds**
+    
+    
+                                      **MisclassifiedFlyingBirds**
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedFlyingBirds.jpg)
-                                   ####  **MisclassifiedLargeQuadcopter**
+                                     **MisclassifiedLargeQuadcopter**
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedLargeQuadcopter.jpg)
-                                   ####  **MisclassifiedSmallQuadcopter**
+                                     **MisclassifiedSmallQuadcopter**
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedSmallQuadcopter.jpg)
-                                   ####  **MisclassifiedWingedDrones**
+                                     **MisclassifiedWingedDrones**
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedWingedDrones.jpg)
  
 14. Save model
