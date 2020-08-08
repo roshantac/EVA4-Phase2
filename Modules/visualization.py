@@ -11,12 +11,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-def visualize_model(model, data, device, num_images=5,save_as="visualize.jpg"):
+def visualize_model(model, data, device, save_as="visualize.jpg"):
     dataloaders, class_names = data.dataloaders, data.class_names
     was_training = model.training
     model.eval()
     images_so_far = 0
     figure = plt.figure(figsize=(6, 12))
+    num_images=5
 
     with torch.no_grad():
         for i, (inputs, labels) in enumerate(dataloaders['val']):
@@ -28,7 +29,7 @@ def visualize_model(model, data, device, num_images=5,save_as="visualize.jpg"):
 
             for j in range(inputs.size()[0]):
                 images_so_far += 1
-                ax = plt.subplot(1, 5, images_so_far)
+                ax = figure.add_subplot(1, 5, images_so_far)
                 ax.axis('off')
                 ax.set_title('predicted: {}'.format(class_names[preds[j]]),fontsize=14)
                 imshow(inputs.cpu().data[j])
