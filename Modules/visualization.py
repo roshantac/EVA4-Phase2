@@ -73,15 +73,17 @@ def imshow_save(inp, save_as="sample.jpg",title=None):
 
 def PlotGraph(plotData,save_as):
     fig, (axs1,axs2) = plt.subplots(2, 1,figsize=(15,10))
-    axs1.plot(plotData['trainLoss'], label = " Train", fontsize=14)
-    axs1.plot(plotData['valLoss'], label = " Test", fontsize=14)
+    axs1.plot(plotData['trainLoss'], label = " Train")
+    axs1.plot(plotData['valLoss'], label = " Test")
     axs1.set_title("Loss", fontsize=16)
 
-    axs2.plot(plotData['trainAccu'], label = " Train",fontsize=14)
-    axs2.plot(plotData['valAccu'], label = " Test",fontsize=14)
+    axs2.plot(plotData['trainAccu'], label = " Train")
+    axs2.plot(plotData['valAccu'], label = " Test")
     axs2.set_title("Accuracy", fontsize=16)
 
-    axs1.legend()
-    axs2.legend()
+    axs1.legend(fontsize=14)
+    axs2.legend(fontsize=14)
+    axs1.tick_params(axis='both', which='major', labelsize=12)
+    axs2.tick_params(axis='both', which='major', labelsize=12)
     plt.show()
     fig.savefig(save_as)
