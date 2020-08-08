@@ -11,13 +11,24 @@
 - Deploy the model on AWS Lambda using Serverless and then use it to classify our images. 
 
 ### **Results**:
+- Team added 1020 large quadcopter images
+- MobileNetv2 pre-trained model with one-cycle policy gave
+    - Training accuracy : 95.23%
+    - Test accuracy: 95.59%
+- Deployed the model on AWS Lambda: https://3g8t28a24d.execute-api.ap-south-1.amazonaws.com/dev/classify
 
 ### **Details**:
-- explains the code,
-- your resizing strategy,
-- what model did you train,
-- accuracy vs epochs graphs for train and test curves
-- 10 misclassified images for each of the classes as an Image Gallery
+- The code is explained in developer section.
+- Resizing strategy
+    - Resized all images above 448 pixel to 448 keeping aspect ratio same
+    - Used RandomResizedCrop in training to manage the different size and got it to 224x224 pixel. It had effect like cutout to control overfitting.
+    - Deployment: we resize the incoming images to 256 keeping aspect ratio same and then we did center crop transformation.
+- Developer Section includes details about 
+    - Code explaination
+    - What model did we trained? MobileNetv2 pre-trained using one cycle policy
+    - Accuracy vs epochs graphs for train and test curves
+    - Accuracy vs epochs graphs for train and test curves are also include in developer section
+    - 10 misclassified images for each of the classes as an Image Gallery
 
 
 
@@ -26,6 +37,11 @@
     - Some of the teams didn't followed the requirements.
     - Eg. Flying birds had many issues like, large count of flocking birds, cartoon, non-bird 
     - Most of the small quadropter are big size then 1 ft.
+- Data/annotation cleaning: Team reviewed the mis-classification images and manually reviewed/updated the annotation.
+- One Cycle policy learning in two stages gave us state of art accuracies considering still annotation errors are present
+- Deployment challenges with torch version in colab and AWS.
+    - Recently colab upgrated torch to version 1.6 and if we zip it, it create totak package size of 167mb (>150mb)
+    - Need to keep version same in colab
 
 
 ## 2. Steps (Developer Section)
