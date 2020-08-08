@@ -39,8 +39,8 @@
 - Data/annotation cleaning: Team reviewed the mis-classification images and manually reviewed/updated the annotation.
 - One Cycle policy learning in two stages gave us state of art accuracies considering still annotation errors are present
 - Deployment challenges with torch version in colab and AWS.
-    - Recently colab upgrated torch to version 1.6 and if we zip it, it create totak package size of 167mb (>150mb)
-    - Need to keep version same in colab
+    - Recently colab upgraded torch to version 1.6 and if we zip it, it create total package size of 167mb (>150mb)
+    - We specified the torch version same in colab to resolve this issue.
 
 
 ## 2. Steps (Developer Section)
