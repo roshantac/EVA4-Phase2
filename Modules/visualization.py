@@ -11,6 +11,28 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
+def denormalize(tensor, mean, std):
+    """Denormalize the image for given mean and standard deviation.
+
+    Args:
+        tensor: Image tensor
+        mean: Dataset mean
+        std: Dataset standard deviation
+
+    Returns:
+        tensor
+
+    Raises:
+        No Exception
+    """
+    if not tensor.ndimension() == 4:
+        raise TypeError('tensor should be 4D')
+
+    mean = torch.FloatTensor(mean).view(1, 3, 1, 1).expand_as(tensor).to(tensor.device)
+    std = torch.FloatTensor(std).view(1, 3, 1, 1).expand_as(tensor).to(tensor.device)
+
+    return tensor.mul(std).add(mean)
+
 def visualize_model(model, data, device, save_as="visualize.jpg"):
     dataloaders, class_names = data.dataloaders, data.class_names
     was_training = model.training
@@ -27,9 +49,12 @@ def visualize_model(model, data, device, save_as="visualize.jpg"):
             outputs = model(inputs)
             _, preds = torch.max(outputs, 1)
 
+            inputs = denormalize(inputs,mean=(0.5404, 0.5918, 0.6219),std=(0.2771, 0.2576, 0.2998)).cpu().numpy()
+
             for j in range(inputs.size()[0]):
                 images_so_far += 1
-                img = inputs.cpu().data[j]
+                
+                img = inputs[j]
                 npimg = np.clip(np.transpose(img,(1,2,0)), 0, 1)
                 ax = figure.add_subplot(1, 5, images_so_far, xticks=[], yticks=[])
                 ax.imshow(npimg, cmap='gray')
