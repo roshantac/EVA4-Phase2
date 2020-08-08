@@ -29,10 +29,11 @@ def visualize_model(model, data, device, save_as="visualize.jpg"):
 
             for j in range(inputs.size()[0]):
                 images_so_far += 1
+                img = inputs.cpu().data[j]
+                npimg = np.clip(np.transpose(img,(1,2,0)), 0, 1)
                 ax = figure.add_subplot(1, 5, images_so_far, xticks=[], yticks=[])
-                ax.axis('off')
+                ax.imshow(npimg, cmap='gray')
                 ax.set_title('predicted:\n{}'.format(class_names[preds[j]]),fontsize=14)
-                ax.imshow(inputs.cpu().data[j])
 
                 if images_so_far == num_images:
                     model.train(mode=was_training)
