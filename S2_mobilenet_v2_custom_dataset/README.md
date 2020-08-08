@@ -106,16 +106,16 @@
     - Display misclassified images
     
     
-                                                MisclassifiedFlyingBirds
+                                                Misclassified Flying Birds
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedFlyingBirds.jpg)
                                     
-                                                MisclassifiedLargeQuadcopter
+                                                Misclassified Large Quadcopter
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedLargeQuadcopter.jpg)
                                      
-                                                MisclassifiedSmallQuadcopter
+                                                Misclassified Small Quadcopter
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedSmallQuadcopter.jpg)
                                      
-                                                MisclassifiedWingedDrones
+                                                Misclassified Winged Drones
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedWingedDrones.jpg)
  
 14. Save model
