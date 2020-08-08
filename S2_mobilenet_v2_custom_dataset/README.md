@@ -18,7 +18,6 @@
 - Deployed the model on AWS Lambda: https://3g8t28a24d.execute-api.ap-south-1.amazonaws.com/dev/classify
 
 ### **Details**:
-- The code is explained in developer section.
 - Resizing strategy
     - Resized all images above 448 pixel to 448 keeping aspect ratio same
     - Used RandomResizedCrop in training to manage the different size and got it to 224x224 pixel. It had effect like cutout to control overfitting.
