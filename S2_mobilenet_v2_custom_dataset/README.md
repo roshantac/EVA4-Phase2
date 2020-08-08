@@ -63,7 +63,7 @@
     - Perform transforms on images data 
     - Visualize images
     
-                                              Sample Prediction
+                                               Sample Images
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/sample.jpg)
 7. Prepare data for training and testing:
     - Split image data as  train data and test data
@@ -88,6 +88,8 @@
     - Plot Loss and Accuracy for the train model
     - Visualize images
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/loss_accuracy_1.jpg)
+
+                                              Sample Prediction
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/visualize_1.jpg)
 
 11. Load **mobilenet_v2** model:
