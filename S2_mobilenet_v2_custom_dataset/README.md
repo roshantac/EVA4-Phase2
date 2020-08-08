@@ -12,6 +12,13 @@
 
 ### **Results**:
 
+### **Details**:
+- explains the code,
+- your resizing strategy,
+- what model did you train,
+- accuracy vs epochs graphs for train and test curves
+- 10 misclassified images for each of the classes as an Image Gallery
+
 
 
 ### **Key Highlights**
