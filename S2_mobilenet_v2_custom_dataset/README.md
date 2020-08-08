@@ -84,7 +84,7 @@
     - Run range_test to determine lr value  using  train dataset
 
 9. Setup Optimizer as **SGD optimiser** and Scheduler as **OneCycleLR**
-    - only parameters of final layer are being optimized 
+    - Only parameters of final layer are being optimized 
     - Decay LR by a factor of 0.1 every 7 epochs
 
 10. Train by train_model function present in [train.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/train.py) for 25 epochs:
