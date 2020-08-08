@@ -31,7 +31,7 @@ def visualize_model(model, data, device, save_as="visualize.jpg"):
                 images_so_far += 1
                 ax = figure.add_subplot(1, 5, images_so_far, xticks=[], yticks=[])
                 ax.axis('off')
-                ax.set_title('predicted: {}'.format(class_names[preds[j]]),fontsize=14)
+                ax.set_title('predicted:\n{}'.format(class_names[preds[j]]),fontsize=14)
                 ax.imshow(inputs.cpu().data[j])
 
                 if images_so_far == num_images:
