@@ -63,7 +63,7 @@
     - Perform transforms on images data 
     - Visualize images
     
-                                               **Sample Images**
+                                               Sample Images
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/sample.jpg)
 7. Prepare data for training and testing:
     - Split image data as  train data and test data
