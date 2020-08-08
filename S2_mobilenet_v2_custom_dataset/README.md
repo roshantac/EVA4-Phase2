@@ -37,9 +37,9 @@
     - Image with size > 448 pixel is resized to 448 pixel, keeping aspect ratio same.
     - Images converted to *.jpg
     - Removed the .ipynb and txt
-    - Removed ~300 flying bird images as the basic requirements are not met.
-    - Renamed the files into consistent naming convention and mapping file for classes.
-    - Curated dataset link: https://drive.google.com/drive/folders/1Xcfk3bJpMkoruQAiY7IJQQkAy0u0CX6u
+    - Removed missplaced images from each class in the dataset.
+    - Renamed the files into consistent naming convention and mapping file for classes. 
+    - Curated dataset link: https://drive.google.com/drive/folders/1YNjGPnE-yft5HRgKb01cQEWvrEUQci_V
 
 3. Data Structure:  After clean-up, the images collected where placed in to 4 folders wthin zip file with root as final_images
     - Flying Birds  
