@@ -101,10 +101,13 @@
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/loss_accuracy_2.jpg)
 ![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/visualize_2.jpg)
 
-13. Find and Display misclassified images
+13. Find and Display misclassified images from each classes
     - Find misclassified images
     - Display misclassified images
-![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/misclassified.jpg)
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedFlyingBirds.jpg)
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedLargeQuadcopter.jpg)
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedSmallQuadcopter.jpg)
+![Image of Yaktocat](https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/output/MisclassifiedWingedDrones.jpg)
  
 14. Save model
     - Save model
