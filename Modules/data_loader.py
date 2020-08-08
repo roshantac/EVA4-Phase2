@@ -202,7 +202,7 @@ class LoadDataset():
         images = denormalize(inputs,mean=(0.5404, 0.5918, 0.6219),std=(0.2771, 0.2576, 0.2998)).cpu().numpy()
 
         counter=0
-        fig = plt.figure(figsize=(12, 20))
+        fig = plt.figure(figsize=(6, 12))
 
         while(counter<5):
             ax = fig.add_subplot(1, 5, counter+1, xticks=[], yticks=[])
