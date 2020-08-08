@@ -16,7 +16,7 @@ def visualize_model(model, data, device, save_as="visualize.jpg"):
     was_training = model.training
     model.eval()
     images_so_far = 0
-    figure = plt.figure(figsize=(20, 6))
+    figure = plt.figure(figsize=(15, 10))
     num_images=5
 
     with torch.no_grad():
