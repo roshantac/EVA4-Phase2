@@ -56,7 +56,7 @@
     
         **Mean :** [0.53614524, 0.58885578, 0.62041911]
         
-        **Std  :** [0.27362225, 0.25486343, 0.2974289 ]
+        **Std  :**  [0.27362225, 0.25486343, 0.2974289 ]
     - This gets used in data tranforms
      
 6. Create DroneDataSet at [data_loader.py](https://github.com/EVA4-RS-Group/Phase2/blob/master/Modules/data_loader.py)
