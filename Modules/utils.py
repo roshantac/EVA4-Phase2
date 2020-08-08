@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import torch
 
 
-def ShowMissclassifiedImages(model, dataloaders, class_names, class_id, device,dataType='val', num_images=12,save_as="misclassified.jpg"):
+def ShowMissclassifiedImages(model, data, class_id, device,dataType='val', num_images=12,save_as="misclassified.jpg"):
+    dataloaders, class_names = data.dataloaders, data.class_names
     was_training = model.training
     model.eval()
     images_so_far = 0
