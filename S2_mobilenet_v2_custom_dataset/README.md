@@ -105,4 +105,4 @@
 
 ## 3. References
 
-1. [Image utils developed by Ramjee Gantir](https://github.com/gantir/image_utils/blob/master/utils.py)
+1. [Image utils developed by Ramjee Ganti](https://github.com/gantir/image_utils/blob/master/utils.py)
