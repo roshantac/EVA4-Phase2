@@ -41,7 +41,7 @@
     - Renamed the files into consistent naming convention and mapping file for classes. 
     - Curated dataset link: https://drive.google.com/drive/folders/1YNjGPnE-yft5HRgKb01cQEWvrEUQci_V
 
-3. Data Structure:  After clean-up, the images collected where placed in to 4 folders wthin zip file with root as final_images
+3. Data Structure:  After clean-up, the images collected where placed in to 4 folders wthin zip file with root as final_images_ver2
     - Flying Birds  
     - Large Quadcopters   
     - Small Quadcopters   
