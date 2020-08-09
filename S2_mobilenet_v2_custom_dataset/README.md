@@ -12,8 +12,9 @@
 
 ### **Results**:
 - Team added 1020 large quadcopter images
-- MobileNetv2 pre-trained model with one-cycle policy: https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/EVA4_S2_mobilnet_v2_transfer_learning_v6B.ipynb
-    - Training accuracy : 95.23%
+- MobileNetv2 pre-trained model with one-cycle policy:   
+https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/EVA4_S2_mobilnet_v2_transfer_learning_v6B.ipynb
+    - Training accuracy : 96.53%
     - Test accuracy: 95.61% 
 - Deployed the model on AWS Lambda: https://3g8t28a24d.execute-api.ap-south-1.amazonaws.com/dev/classify
 
