@@ -39,6 +39,7 @@ repos:
             name: Fix trailing whitespace
             exclude: setup.cfg
           - id: check-added-large-files
+            args: [--maxkb=1024]
           - id: end-of-file-fixer
             name: Fix missing EOF
             exclude: setup.cfg
