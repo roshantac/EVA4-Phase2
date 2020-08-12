@@ -37,3 +37,5 @@ DEFAULT_PAGINATION = 5
 RELATIVE_URLS = True
 
 THEME = "/Users/projects/work/learning/Phase2/frontend/themes/phantom"
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["pelican_javascript"]

@@ -207,5 +207,23 @@
   <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/breakpoints.min.js"></script>
   <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/util.js"></script>
   <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/main.js"></script>
+
+  <!-- include javascript included on article-->
+  {% if article %}
+    {% if article.javascripts %}
+        {% for javascript in article.javascripts %}
+          {{ javascript }}
+        {% endfor %}
+    {% endif %}
+  {% endif %}
+  <!-- include javascript included on page-->
+  {% if page %}
+    {% if page.javascripts %}
+        {% for javascript in page.javascripts %}
+          {{ javascript }}
+        {% endfor %}
+    {% endif %}
+  {% endif %}
+
 </body>
 </html>
