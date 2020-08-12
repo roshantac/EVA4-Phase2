@@ -18,7 +18,7 @@
 {% block title %} &ndash; {{ article.title|striptags|escape }}{% endblock %}
 
 {% block content %}
-<article class="inner">
+
   <header>
     {% if not ARTICLE_HIDE_TRANSLATION %}
       {% import 'partial/translations.html' as translations with context %}
@@ -49,9 +49,9 @@
     </script>
   {% endif %}
 
-  <div>
-    {{ article.content }}
-  </div>
+
+  {{ article.content }}
+
 
   {% if article.related_posts %}
   <section class="tiles">
@@ -82,5 +82,5 @@
   {% endif %}
 
   {% include "partial/disqus.html" %}
-</article>
+
 {% endblock %}

@@ -14,7 +14,7 @@
 {% block title %} &ndash; {{ page.title }}{% endblock %}
 
 {% block content %}
-<article class="inner">
+
   <header>
     {% import 'partial/translations.html' as translations with context %}
     {{ translations.translations_for(page) }}
@@ -25,5 +25,5 @@
     {% block page_content %}{{ page.content }}{% endblock %}
     {% block after_content %}{% endblock %}
   </div>
-</article>
+
 {% endblock %}
