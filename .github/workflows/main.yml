@@ -43,6 +43,7 @@ jobs:
         env:
           SITE_URL: http://rsgroup.s3-website.ap-south-1.amazonaws.com
         run: |
+          source $HOME/.poetry/env
           cd frontend
           poetry run make html
           poetry run make s3_upload
