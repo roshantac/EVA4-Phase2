@@ -29,6 +29,12 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: "3.8"
+      - name: Install AWS CLI
+        run: |
+          curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+          sudo installer -pkg AWSCLIV2.pkg -target /
+          which aws
+          aws --version
       - name: Install Poetry
         run: |
           wget https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
@@ -39,7 +45,7 @@ jobs:
           source $HOME/.poetry/env
           poetry install
       # Build Pelican documentation and deploy
-      - name: Run a multi-line script
+      - name: Build the Pelican pages and upload to s3
         env:
           SITE_URL: http://rsgroup.s3-website.ap-south-1.amazonaws.com
         run: |
