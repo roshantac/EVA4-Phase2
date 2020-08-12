@@ -76,35 +76,38 @@
     showImage(this);
   });
 
-  $("#classifyImage").click(function(){
-    classifyWeek1()
+  $("#classifyImage1").click(function(){
+    return classify("week1")
   });
 
-  function classifyWeek1() {
+  $("#classifyImage2").click(function(){
+    return classify("week2")
+  });
 
+  function classify(url_key) {
     var documentData = new FormData();
 
     // Post the file to url and get response
     documentData.append("body", $('input#getFile')[0].files[0]);
-      $.retryAjax({
-          url: url.week1,
-          type: 'POST',
-          data: documentData,
-          async: false,
-          cache: false,
-          contentType: false,
-          processData: false,
-          timeout:5000,
-          success: function (response) {
-              $("#imgClass").text(response.predicted)
-          },
-          error: function(e) {
-            alert(e.responseText)
-          }
-      });
-
-      return false;
+    $.retryAjax({
+        url: url[url_key],
+        type: 'POST',
+        data: documentData,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        timeout:5000,
+        success: function (response) {
+            $("#imgClass").text(response.predicted)
+        },
+        error: function(e) {
+          alert(e.responseText)
+        }
+    });
+    return false;
   }
+
   // Display error messages.
   function onError(error) {
     alert(error.responseText);
