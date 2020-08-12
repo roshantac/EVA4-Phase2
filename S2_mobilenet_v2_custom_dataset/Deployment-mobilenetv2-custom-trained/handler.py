@@ -23,7 +23,7 @@ print("Import End...")
 S3_BUCKET = os.environ['S3_BUCKET'] if 'S3_BUCKET' in os.environ \
     else 'tsai-assignment-models-s2'
 MODEL_PATH = os.environ['MODEL_PATH'] if 'MODEL_PATH' in os.environ \
-    else 'mobilenet_v2_custom_trained_v4.pt'
+    else 'mobilenet_v2_custom_trained_v6.pt'
 
 print('Downloading model...')
 
@@ -111,7 +111,7 @@ def classify_image(event, context):
         prediction = get_prediction(image_bytes=picture.content)
         print(prediction)
 
-        class_names = ['Large QuadCopters', 'Flying Birds', 'Small QuadCopters', 'Winged Drones']
+        class_names = ['Flying Birds', 'Large QuadCopters', 'Small QuadCopters', 'Winged Drones']
 
         prediction_label = class_names[prediction]
 

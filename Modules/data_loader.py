@@ -192,7 +192,7 @@ class LoadDataset():
         self.class_names = self.trainSet.classes
         #print(self.class_names)
 
-    def show_batch(self):
+    def show_batch(self, save_as="sample.jpg"):
         """Show five sample images for verification of dataloaders.
 
         Get item internal fuction
@@ -202,7 +202,7 @@ class LoadDataset():
         images = denormalize(inputs,mean=(0.5404, 0.5918, 0.6219),std=(0.2771, 0.2576, 0.2998)).cpu().numpy()
 
         counter=0
-        fig = plt.figure(figsize=(12, 20))
+        fig = plt.figure(figsize=(15, 10))
 
         while(counter<5):
             ax = fig.add_subplot(1, 5, counter+1, xticks=[], yticks=[])
@@ -213,7 +213,7 @@ class LoadDataset():
             counter+=1
         fig.tight_layout()  
         plt.show()
-
+        fig.savefig(save_as)
         #imshow_save(out, save_as="sample.jpg",title=[class_names[int(x)] for x in classes[0:4]])
 
 

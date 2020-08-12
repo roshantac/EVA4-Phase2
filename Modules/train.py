@@ -8,8 +8,10 @@ import copy
 
 
 
-def train_model(model,dataloaders, dataset_sizes, device, criterion, optimizer, scheduler, num_epochs=25):
+def train_model(model,data, device, criterion, optimizer, scheduler, num_epochs=25):
     since = time.time()
+
+    dataloaders, dataset_sizes = data.dataloaders, data.dataset_sizes
 
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
@@ -90,18 +92,3 @@ def train_model(model,dataloaders, dataset_sizes, device, criterion, optimizer, 
     return model, plotData
 
 
-
-def PlotGraph(plotData,save_as):
-    fig, (axs1,axs2) = plt.subplots(2, 1,figsize=(15,10))
-    axs1.plot(plotData['trainLoss'], label = " Train")
-    axs1.plot(plotData['valLoss'], label = " Test")
-    axs1.set_title("Loss")
-
-    axs2.plot(plotData['trainAccu'], label = " Train")
-    axs2.plot(plotData['valAccu'], label = " Test")
-    axs2.set_title("Accuracy")
-
-    axs1.legend()
-    axs2.legend()
-    plt.show()
-    fig.savefig(save_as)

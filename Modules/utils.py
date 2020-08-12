@@ -5,11 +5,12 @@ import matplotlib.pyplot as plt
 import torch
 
 
-def ShowMissclassifiedImages(model, dataloaders, class_names, class_id, device,dataType='val', num_images=12,save_as="misclassified.jpg"):
+def ShowMissclassifiedImages(model, data, class_id, device,dataType='val', num_images=12,save_as="misclassified.jpg"):
+    dataloaders, class_names = data.dataloaders, data.class_names
     was_training = model.training
     model.eval()
     images_so_far = 0
-    fig, axs = plt.subplots(int(num_images/4),4,figsize=(20,20))
+    fig, axs = plt.subplots(int(num_images/4),4,figsize=(12,12))
     with torch.no_grad():
         for i, (inputs, labels) in enumerate(dataloaders[dataType]):
             inputs = inputs.to(device)
@@ -28,7 +29,8 @@ def ShowMissclassifiedImages(model, dataloaders, class_names, class_id, device,d
                   std = np.array([0.27420551, 0.25534403, 0.29759673])
                   imagex = std*imagex  + mean
                   imagex = np.clip(imagex, 0, 1)       
-                  axs[row,col].imshow(imagex) 
+                  axs[row,col].imshow(imagex)
+                  axs[row,col].axis('off')
                   fig.tight_layout(pad=2.0)
                   axs[row,col].set_title('Predicted: {} \n Actual: {}'.format(class_names[preds[j]],class_names[labels[j]]))
                   images_so_far += 1
