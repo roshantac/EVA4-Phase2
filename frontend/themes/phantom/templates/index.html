@@ -21,15 +21,15 @@
     {% for article in articles_page.object_list %}
       <article class="style{{ loop.index % 7 }}">
         <span class="image">
-          <img src="images/pic.jpg" alt="" />
+          <img src="https://html5up.net/uploads/demos/phantom/images/pic0{{loop.index % 7}}.jpg" alt="" />
         </span>
         <a href="{{ SITEURL }}/{{ article.url }}">
           <h2>{{ article.title }}</h2>
-          <div class="content">
+          <!-- <div class="content">
             {% if summarise or article.metadata['summary'] or SUMMARY_MAX_LENGTH %}
             <p>{{ article.summary }}</p>
             {% endif %}
-          </div>
+          </div> -->
         </a>
       </article>
     {% endfor %}

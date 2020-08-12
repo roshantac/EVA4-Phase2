@@ -1,12 +1,13 @@
-Title: Week1 Mobilenet V2
+Title: Week2 Mobilenet V2
+date: 2020-08-09
 Javascripts: main.js
 
-In this week we deployed our model inference code to S3. The network is mobile net v2 trained on imagenet dataset.
+In this week we deployed our model inference code to S3. The network is mobile net v2 trained on custom drone dataset.
 
 
   <section>
     <div class="row gtr-uniform">
-      <div class="col-6 col-12-xsmall">
+      <div class="col-3 col-12-xsmall">
         <ul class="actions">
           <li><input id="getFile" type="file" accept="image/jpg"/></li>
         </ul>
@@ -15,8 +16,10 @@ In this week we deployed our model inference code to S3. The network is mobile n
         </ul>
       </div>
       <div class="col-6 col-12-xsmall">
-        <span class="image fit"><img id="upImage" src="#" alt=""></span>
-        <span id="imgClass"></span>
+        <span class="image fit">
+          <img id="upImage" src="#" alt="">
+        </span>
+        <h3 id="imgClass" style="text-align:center" ></p>
       </div>
     </div>
   </section>

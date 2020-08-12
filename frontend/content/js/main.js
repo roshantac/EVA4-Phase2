@@ -9,10 +9,49 @@
     }
   });
 
+  $.retryAjax = function (ajaxParams) {
+    var errorCallback;
+    ajaxParams.tryCount = (!ajaxParams.tryCount) ? 0 : ajaxParams.tryCount;
+    ajaxParams.retryLimit = (!ajaxParams.retryLimit) ? 2 : ajaxParams.retryLimit;
+    ajaxParams.suppressErrors = true;
+
+    if (ajaxParams.error) {
+        errorCallback = ajaxParams.error;
+        delete ajaxParams.error;
+    } else {
+        errorCallback = function () {
+
+        };
+    }
+
+    ajaxParams.complete = function (jqXHR, textStatus) {
+        if ($.inArray(textStatus, ['timeout', 'abort', 'error']) > -1) {
+            this.tryCount++;
+            if (this.tryCount <= this.retryLimit) {
+
+                // fire error handling on the last try
+                if (this.tryCount === this.retryLimit) {
+                    this.error = errorCallback;
+                    delete this.suppressErrors;
+                }
+
+                //try again
+                console.log("Trying again");
+                $.ajax(this);
+                return true;
+            }
+
+            window.alert('There was a server error.  Please refresh the page.  If the issue persists, give us a call. Thanks!');
+            return true;
+        }
+    };
+
+    $.ajax(ajaxParams);
+  };
 
   var url = {
-    "week1": "<url>",
-    "week2": "<url>"
+    "week1": "https://jzworltk54.execute-api.ap-south-1.amazonaws.com/dev/classify",
+    "week2": "https://jzworltk54.execute-api.ap-south-1.amazonaws.com/dev/classify"
   };
 
   // Utils
@@ -47,7 +86,7 @@
 
     // Post the file to url and get response
     documentData.append("body", $('input#getFile')[0].files[0]);
-      $.ajax({
+      $.retryAjax({
           url: url.week1,
           type: 'POST',
           data: documentData,
@@ -55,6 +94,7 @@
           cache: false,
           contentType: false,
           processData: false,
+          timeout:5000,
           success: function (response) {
               $("#imgClass").text(response.predicted)
           },
