@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<meta name="author" content="{{ article.author.name }}" />
+<meta name="description" content="{{ article.summary|striptags|escape }}" />
+<meta name="keywords" content="{{ article.tags|join(', ')|escape }}">
+
+{% if article.translations -%}
+<link rel="alternate" href="{{ SITEURL }}/{{ article.url }}" hreflang="{{ article.lang }}" />
+{% for a in article.translations %}
+<link rel="alternate" href="{{ SITEURL }}/{{ a.url }}" hreflang="{{ a.lang }}" />
+{% endfor %}
+{% endif %}
+
+{% include "partial/og_article.html" %}
+{% endblock %}
+
+{% block title %} &ndash; {{ article.title|striptags|escape }}{% endblock %}
+
+{% block content %}
+
+  <header>
+    {% if not ARTICLE_HIDE_TRANSLATION %}
+      {% import 'partial/translations.html' as translations with context %}
+      {{ translations.translations_for(article) }}
+    {% endif %}
+    <h1 id="{{ article.slug }}">{{ article.title }}</h1>
+    {% if  article.featured_image %}
+      <span class="image main"><img src="{{ article.featured_image }}" alt="" /></span>
+    {% endif %}
+    <p>
+      {{ _('Posted on %(when)s in %(category)s',
+           when=article.locale_date,
+           category='<a href="%s/%s">%s</a>'|format(SITEURL, article.category.url, article.category)|safe) }}
+
+      {% if 'post_stats' in PLUGINS %}
+        &#8226; {{ _('%(minutes)s min read', minutes=article.stats['read_mins']) }}
+      {% endif %}
+    </p>
+  </header>
+
+  {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.article_top %}
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}"
+         data-ad-slot="{{ GOOGLE_ADSENSE.ads.article_top }}"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  {% endif %}
+
+
+  {{ article.content }}
+
+
+  {% if article.related_posts %}
+  <section class="tiles">
+    {% for related_post in article.related_posts %}
+    <article class="style{{ loop.index % 7 }}">
+      <span class="image">
+        <img src="images/pic.jpg" alt="" />
+      </span>
+      <a href="{{ SITEURL }}/{{ related_post.url }}">
+        <h2>{{ related_post.title }}</h2>
+        <div class="content">
+          <p>{{ related_post.summary }}</p>
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.article_bottom %}
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle ads-responsive"
+         data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}"
+         data-ad-slot="{{ GOOGLE_ADSENSE.ads.article_bottom }}"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  {% endif %}
+
+  {% include "partial/disqus.html" %}
+
+{% endblock %}
