@@ -1,0 +1,48 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  strategy:
+    matrix:
+      python_version: [3.8]
+      poetry_version: [1.0]
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.8"
+    - name: Install Poetry
+      run: |
+        python get-poetry.py --preview -y
+        source $HOME/.poetry/env
+    - name: Install Python dependencies
+      run: |
+        source $HOME/.poetry/env
+        poetry install
+    # Build Pelican documentation and deploy
+    - name: Run a multi-line script
+      env:
+        SITE_URL: http://rsgroup.s3-website.ap-south-1.amazonaws.com
+      run: |
+        cd frontend
+        poetry run make html
+        poetry run make s3_upload
