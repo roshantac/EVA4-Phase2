@@ -130,3 +130,6 @@ dmypy.json
 
 # Project Specific
 frontend/output/
+
+# Mac meta files
+.DS_Store
