@@ -51,7 +51,8 @@
 
   var url = {
     "week1": "https://jzworltk54.execute-api.ap-south-1.amazonaws.com/dev/classify",
-    "week2": "https://jzworltk54.execute-api.ap-south-1.amazonaws.com/dev/classify"
+    "week2": "https://jzworltk54.execute-api.ap-south-1.amazonaws.com/dev/classify",
+    "face_swap": "https://zuav5qg7sc.execute-api.ap-south-1.amazonaws.com/dev/face_swap"
   };
 
   // Utils
@@ -83,6 +84,30 @@
   $("#classifyImage2").click(function(){
     return classify("week2")
   });
+
+  $("#faceSwap").click(function(){
+    var documentData = new FormData();
+    $.each($('input#getFile')[0].files,function(i, file){
+      documentData.append("files["+i+"]", file)
+    });
+    $.ajax({
+      url: url["face_swap"],
+      type: 'POST',
+      data: documentData,
+      async: false,
+      cache: false,
+      contentType: false,
+      processData: false,
+      timeout:5000,
+      success: function (response) {
+          $("#file1").attr('src', 'data:image/png;base64,'+ response["file1"][1])
+          $("#file2").attr('src', 'data:image/png;base64,'+ response["file2"][1])
+      },
+      error: function(e) {
+        alert(e.responseText)
+      }
+  });
+  })
 
   function classify(url_key) {
     var documentData = new FormData();

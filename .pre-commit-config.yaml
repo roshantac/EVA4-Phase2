@@ -1,5 +1,4 @@
 ---
-exclude: ^docs/conf.py
 default_language_version:
     python: python3
 repos:
