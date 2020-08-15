@@ -24,10 +24,10 @@ In this week we deployed our model inference code to S3. The network is mobile n
     </div>
     <div class="row gtr-uniform">
       <div class="col-4">
-        <span class="image fit"><img id="file1" src="#" alt=""></span>
+        <span class="image fit"><img id="file0" src="#" alt=""></span>
       </div>
       <div class="col-4">
-        <span class="image fit"><img id="file2" src="#" alt=""></span>
+        <span class="image fit"><img id="file1" src="#" alt=""></span>
       </div>
       <div class="col-4">
         <span class="image fit"><img src="images/pic03.jpg" alt=""></span>

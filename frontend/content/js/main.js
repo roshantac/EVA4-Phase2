@@ -100,8 +100,8 @@
       processData: false,
       timeout:5000,
       success: function (response) {
+          $("#file0").attr('src', 'data:image/png;base64,'+ response["file0"][1])
           $("#file1").attr('src', 'data:image/png;base64,'+ response["file1"][1])
-          $("#file2").attr('src', 'data:image/png;base64,'+ response["file2"][1])
       },
       error: function(e) {
         alert(e.responseText)
