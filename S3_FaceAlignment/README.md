@@ -1,4 +1,4 @@
-# Session 2 - Deploying Mobilenet_v2 model for Custom Dataset
+# Session 3 - Face Recognition & AWS static Website
 
 
 ## 1. Executive Summary
@@ -6,30 +6,19 @@
 
 ### **Objectives**:
 
-- Group challenge involving data curation for different flying objects like bird, drones. Our group target is to curate 1000 images of large quadcopter.
-- Train mobilenet_v2 model for custom dataset
-- Deploy the model on AWS Lambda using Serverless and then use it to classify our images. 
+- Upload html and js files to your S3 bucket and create a policy using which the html file can be accessed by anyone. The HTML file should contain:
+    1. ResNet Example (as shared in the code above)
+    2. MobileNet Example (trained on your dataset)
+    3. Face Alignment Feature (as shared above)
+        - Bonus 1000 points additional from 3000 for this assignment if you implement Face Swap. 
+- Create a Face Alignment App on Lambda (code is shared above), where if someone uploads a face (you check that by using dlib face detector), you return aligned face. Image with more than 1 face is not processed for alignment. 
+- Share the link to your S3 html file that can be accessed by anyone. Also share the link to your GitHub repo for the code (please remember to always remove the keys, secrect_keys, etc from your code before uploading to GitHub. How?)
 
 ### **Results**:
-- Team added 1020 large quadcopter images
-- MobileNetv2 pre-trained model with one-cycle policy:   
-https://github.com/EVA4-RS-Group/Phase2/blob/master/S2_mobilenet_v2_custom_dataset/Training/EVA4_S2_mobilnet_v2_transfer_learning_v6B.ipynb
-    - Training accuracy : 96.53%
-    - Test accuracy: 95.61% 
-- Deployed the model on AWS Lambda: https://3g8t28a24d.execute-api.ap-south-1.amazonaws.com/dev/classify
-
-### **Details**:
-- Resizing strategy
-    - Resized all images above 448 pixel to 448 keeping aspect ratio same
-    - Used RandomResizedCrop in training to manage the different size and got it to 224x224 pixel. It had effect like cutout to control overfitting.
-    - Deployment: we resize the incoming images to 256 keeping aspect ratio same and then we did center crop transformation.
-- Developer Section includes details about 
-    - Code explaination
-    - What model did we trained? MobileNetv2 pre-trained using one cycle policy
-    - Accuracy vs epochs graphs for train and test curves
-    - Accuracy vs epochs graphs for train and test curves are also include in developer section
-    - 10 misclassified images for each of the classes as an Image Gallery
-
+- Team hosted static website : 
+    - Resnet imagenet from [Session 1]()
+    - MobileNet Example from [Session 2]()
+    - FaceAlignment & FaceSwap application - putting mask, Details are covered in Developer Section.
 
 
 ### **Key Highlights**
